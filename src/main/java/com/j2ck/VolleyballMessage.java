@@ -1,3 +1,5 @@
+package com.j2ck;
+
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
