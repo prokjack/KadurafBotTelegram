@@ -1,18 +1,20 @@
 package com.j2ck;
 
+import com.j2ck.dict.DictBot;
+import com.j2ck.kaduraf.KadurafBot;
 import com.j2ck.stereogram.StereogramBot;
-import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
-    public static void main(String[] args) {
-        ApiContextInitializer.init(); // Инициализируем апи
-        TelegramBotsApi botapi = new TelegramBotsApi();
+    public static void main(String[] args) throws TelegramApiException {
+        TelegramBotsApi botapi = new TelegramBotsApi(DefaultBotSession.class);
         try {
-            botapi.registerBot(new Bot());
+            botapi.registerBot(new KadurafBot());
             botapi.registerBot(new StereogramBot());
-        } catch (TelegramApiException e) {
+            botapi.registerBot(new DictBot());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -1,4 +1,4 @@
-package com.j2ck;
+package com.j2ck.kaduraf;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

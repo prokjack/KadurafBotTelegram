@@ -1,4 +1,4 @@
-package com.j2ck;
+package com.j2ck.kaduraf;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.Optional;
 
-public class Bot extends TelegramLongPollingBot {
+public class KadurafBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 // We check if the update has a message and the message has text
         Optional.ofNullable(update.getMessage()).map(Message::getText)
@@ -29,9 +29,8 @@ public class Bot extends TelegramLongPollingBot {
 
     private VolleyballMessage handleRequest(String text, Long chatId) {
         if (text.contains("/nextgame")) {
-                SendMessage sendMessage = new SendMessage(chatId, "Next game scheduled on 25/08/2018 at 5:30PM");
-                SendLocation sendLocation = new SendLocation(32.073998f, 34.764729f);
-                sendLocation.setChatId(chatId);
+                SendMessage sendMessage = new SendMessage(chatId.toString(), "Next game scheduled on 25/08/2018 at 5:30PM");
+                SendLocation sendLocation = new SendLocation(chatId.toString(), 32.073998, 34.764729);
                 return new VolleyballMessage(VMessageType.SCHEDULED_GAME, sendMessage, sendLocation);
         }
         return null;

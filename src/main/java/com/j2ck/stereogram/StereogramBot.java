@@ -1,9 +1,11 @@
 package com.j2ck.stereogram;
 
+import com.j2ck.MessageType;
 import com.j2ck.stereogram.generator.ImageManipulator;
 import com.j2ck.stereogram.generator.StereogramGenerator;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -23,7 +25,7 @@ public class StereogramBot extends TelegramLongPollingBot {
                 .map(text -> handleRequest(text, update.getMessage().getChatId())).ifPresent(method -> {
                     try {
                         if (method.getSuccess()) {
-                            if (method.getMessageType().equals(StereogramMessageType.IMAGE_RESPONSE)) {
+                            if (method.getMessageType().equals(MessageType.IMAGE_RESPONSE)) {
                                 execute(method.getPhoto());
                             }
                         } else {
@@ -64,10 +66,9 @@ public class StereogramBot extends TelegramLongPollingBot {
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
                 ImageIO.write(stereogram, "jpeg", os);                          // Passing: ​(RenderedImage im, String formatName, OutputStream output)
                 InputStream is = new ByteArrayInputStream(os.toByteArray());
-                SendPhoto sendPhoto = new SendPhoto();
-                sendPhoto.setChatId(chatId);
-                sendPhoto.setPhoto(textToHandle, is);
-                return new StereogramMessage(true, StereogramMessageType.IMAGE_RESPONSE, sendPhoto);
+                SendPhoto sendPhoto = new SendPhoto(chatId.toString(), new InputFile(is, "new.jpeg"));
+                sendPhoto.setCaption(textToHandle);
+                return new StereogramMessage(true, MessageType.IMAGE_RESPONSE, sendPhoto);
             } catch (Exception e) {
                 return new StereogramMessage(false);
             }
