@@ -99,40 +99,40 @@
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
-            <version>5.4.0.1</version>
+            <version>6.9.7.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.api-client</groupId>
             <artifactId>google-api-client</artifactId>
-            <version>1.33.2</version>
+            <version>2.7.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
-            <version>1.33.0</version>
+            <version>1.39.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-sheets -->
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-sheets</artifactId>
-            <version>v4-rev20210629-1.32.1</version>
+            <version>v4-rev20250211-2.0.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.3</version>
+            <version>1.19.1</version>
         </dependency>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots-chat-session-bot</artifactId>
-            <version>5.7.1</version>
+            <version>6.9.7.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.auth</groupId>
             <artifactId>google-auth-library-oauth2-http</artifactId>
-            <version>1.4.0</version>
+            <version>1.33.1</version>
         </dependency>
     </dependencies>
 </project>
